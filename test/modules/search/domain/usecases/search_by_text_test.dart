@@ -16,7 +16,7 @@ main() {
     when(repository.search(any))
         .thenAnswer((_) async => Right(<ResultSearch>[]));
 
-    final result = await usecase("Josimar");
+    final result = await usecase("josimar16");
     expect(result | null, isA<List<ResultSearch>>());
   });
 

@@ -17,7 +17,7 @@ main() {
     when(datasource.getSearch(any))
         .thenAnswer((_) async => <ResultSearchModel>[]);
 
-    final result = await repository.search("Josimar");
+    final result = await repository.search("josimar16");
 
     expect(result | null, isA<List<ResultSearch>>());
   });
@@ -27,7 +27,7 @@ main() {
       () async {
     when(datasource.getSearch(any)).thenThrow(Exception());
 
-    final result = await repository.search("Josimar");
+    final result = await repository.search("josimar16");
 
     expect(result.fold(id, id), isA<DatasourceError>());
   });
