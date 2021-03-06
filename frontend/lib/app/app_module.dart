@@ -1,7 +1,8 @@
 import 'package:frontend/app/search/presenter/search_bloc.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
 import 'package:frontend/app/app_widget.dart';
 
 import 'search/domain/usecases/search_by_text.dart';
@@ -15,7 +16,7 @@ class AppModule extends MainModule {
         $SearchByTextImpl,
         $SearchRepositoryImpl,
         $GithubSearchDatasource,
-        Bind((i) => Dio()),
+        Bind((i) => http.Client()),
         $SearchBloc,
       ];
 

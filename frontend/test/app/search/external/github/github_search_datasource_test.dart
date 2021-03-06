@@ -1,21 +1,20 @@
 import 'dart:convert';
 
 import 'package:frontend/app/search/external/github/github_search_datasource.dart';
-import 'package:dio/dio.dart';
+import 'package:http/http.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:frontend/app/search/infra/models/result_search_model.dart';
 import 'package:mockito/mockito.dart';
 
-class DioMock extends Mock implements Dio {}
+class HttpMock extends Mock implements Client {}
 
 main() {
-  var dio = DioMock();
-  var datasource = GithubSearchDatasource(dio);
+  var client = HttpMock();
+  var datasource = GithubSearchDatasource(client);
   test('deve retornar um ResultModel', () async {
-    when(dio.get(any)).thenAnswer(
-        (_) async => Response(data: jsonDecode(jsonResponse), statusCode: 200));
+    when(client.get(any)).thenAnswer((_) async => Response(jsonResponse, 200));
 
-    var result = await datasource.searchText("jacob");
+    var result = await datasource.searchText("josimar16");
     expect(result, isA<List<ResultModel>>());
   });
 }

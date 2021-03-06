@@ -21,11 +21,13 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  dio: ^3.0.10
+  # dio: ^3.0.10
   dartz:
   flutter_modular: ^2.0.1
   flutter_bloc: ^6.1.2
   rxdart: ^0.24.1
+  http:
+    git: https://github.com/dart-lang/http
   flutter:
     sdk: flutter
 

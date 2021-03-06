@@ -13,26 +13,26 @@ main() {
   final repository = SearchRepositoryImpl(datasource);
 
   test('deve retornar uma lista de ResultModel', () async {
-    when(datasource.searchText("jacob"))
+    when(datasource.searchText("josimar16"))
         .thenAnswer((_) async => <ResultModel>[ResultModel()]);
 
-    var result = await repository.getUsers("jacob");
+    var result = await repository.getUsers("josimar16");
     expect(result | null, isA<List<ResultModel>>());
   });
 
   test('deve retornar um ErrorSearch caso seja lançado throw no datasource',
       () async {
-    when(datasource.searchText("jacob")).thenThrow(ErrorSearch());
+    when(datasource.searchText("josimar16")).thenThrow(ErrorSearch());
 
-    var result = await repository.getUsers("jacob");
+    var result = await repository.getUsers("josimar16");
     expect(result.fold(id, id), isA<ErrorSearch>());
   });
   test(
       'deve retornar um DatasourceResultNull caso o retorno do datasource seja nulo',
       () async {
-    when(datasource.searchText("jacob")).thenAnswer((_) async => null);
+    when(datasource.searchText("josimar16")).thenAnswer((_) async => null);
 
-    var result = await repository.getUsers("jacob");
+    var result = await repository.getUsers("josimar16");
     expect(result.fold(id, id), isA<DatasourceResultNull>());
   });
 }
