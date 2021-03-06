@@ -3,21 +3,20 @@ import 'dart:convert';
 import 'package:frontend/app/app_module.dart';
 import 'package:frontend/app/search/presenter/search_bloc.dart';
 import 'package:frontend/app/search/presenter/states/search_state.dart';
-import 'package:dio/dio.dart';
+import 'package:http/http.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_modular/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-class DioMock extends Mock implements Dio {}
+class HttpMock extends Mock implements Client {}
 
 main() {
-  var dio = DioMock();
+  var client = HttpMock();
 
-  initModule(AppModule(), changeBinds: [Bind((i) => dio)]);
+  initModule(AppModule(), changeBinds: [Bind((i) => client)]);
 
-  when(dio.get(any)).thenAnswer(
-      (_) async => Response(data: jsonDecode(jsonResponse), statusCode: 200));
+  when(client.get(any)).thenAnswer((_) async => Response(jsonResponse, 200));
 
   test('deve emitir sequencia correta de estados', () async {
     var bloc = Modular.get<SearchBloc>();
@@ -27,7 +26,7 @@ main() {
           isA<LoadingState>(),
           isA<SuccessState>(),
         ]));
-    bloc.add('jacob');
+    bloc.add('josimar16');
   });
 }
 

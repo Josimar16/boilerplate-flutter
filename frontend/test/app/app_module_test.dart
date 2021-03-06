@@ -3,30 +3,29 @@ import 'dart:convert';
 import 'package:frontend/app/app_module.dart';
 import 'package:frontend/app/search/domain/entities/result.dart';
 import 'package:frontend/app/search/domain/usecases/search_by_text.dart';
-import 'package:dio/dio.dart';
+import 'package:http/http.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_modular/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-class DioMock extends Mock implements Dio {}
+class HttpMock extends Mock implements Client {}
 
 main() {
-  var dio = DioMock();
+  var client = HttpMock();
 
   initModule(
     AppModule(),
     changeBinds: [
-      Bind((i) => dio),
+      Bind((i) => client),
     ],
   );
 
   test('deve executar usecase search_by_text', () async {
-    when(dio.get(any)).thenAnswer(
-        (_) async => Response(data: jsonDecode(jsonResponse), statusCode: 200));
+    when(client.get(any)).thenAnswer((_) async => Response(jsonResponse, 200));
 
     var usecase = Modular.get<SearchByText>();
-    var result = await usecase("jacob");
+    var result = await usecase("josimar16");
     expect(result.isRight(), true);
     expect(result | null, isA<List<Result>>());
   });
@@ -37,7 +36,7 @@ var jsonResponse = r'''{
   "incomplete_results": false,
   "items": [
     {
-      "login": "jacob",
+      "login": "josimar16",
       "id": 3121,
       "node_id": "MDQ6VXNlcjMxMjE=",
       "avatar_url": "https://avatars1.githubusercontent.com/u/3121?v=4",
