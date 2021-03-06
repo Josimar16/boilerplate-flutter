@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:frontend/app/search/domain/errors/errors.dart';
 
-import 'search_bloc.dart';
-import 'states/search_state.dart';
+import '../stores/search_bloc.dart';
+import '../stores/search_state.dart';
 
 class SearchPage extends StatefulWidget {
   @override
@@ -22,6 +22,9 @@ class _SearchPageState extends ModularState<SearchPage, SearchBloc> {
             backgroundImage: NetworkImage(item.image),
           ),
           title: Text(item.nickname),
+          onTap: () {
+            Modular.to.pushNamed('/profile', arguments: item);
+          },
         );
       },
     );
