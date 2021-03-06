@@ -12,7 +12,7 @@ main() {
   final repository = SearchRepositoryMock();
   final usecase = SearchByTextImpl(repository);
 
-  test('deve retornar uma lista com resultados', () async {
+  test('should be able return the list with results', () async {
     when(repository.getUsers("josimar16"))
         .thenAnswer((_) async => right(<Result>[Result()]));
 
@@ -20,7 +20,7 @@ main() {
     expect(result | null, isA<List<Result>>());
   });
 
-  test('deve retornar um InvalidSearchText caso o texto seja inválido',
+  test('should be able return the InvalidSearchText case the text be invalid',
       () async {
     var result = await usecase(null);
     expect(result.fold(id, id), isA<InvalidSearchText>());
