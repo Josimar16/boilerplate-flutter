@@ -1,4 +1,5 @@
-import 'package:frontend/app/search/presenter/search_bloc.dart';
+import 'package:frontend/app/search/presenter/pages/profile_page.dart';
+import 'package:frontend/app/search/presenter/stores/search_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -8,7 +9,7 @@ import 'package:frontend/app/app_widget.dart';
 import 'search/domain/usecases/search_by_text.dart';
 import 'search/external/github/github_search_datasource.dart';
 import 'search/infra/repositories/search_repository_impl.dart';
-import 'search/presenter/search_page.dart';
+import 'search/presenter/pages/search_page.dart';
 
 class AppModule extends MainModule {
   @override
@@ -22,7 +23,11 @@ class AppModule extends MainModule {
 
   @override
   List<ModularRouter> get routers => [
-        ModularRouter(Modular.initialRoute, child: (_, __) => SearchPage()),
+        ModularRouter(Modular.initialRoute,
+            transition: TransitionType.fadeIn, child: (_, __) => SearchPage()),
+        ModularRouter('/profile',
+            transition: TransitionType.fadeIn,
+            child: (_, args) => ProfilePage(result: args?.data)),
       ];
 
   @override

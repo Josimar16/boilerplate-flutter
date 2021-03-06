@@ -2,7 +2,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:frontend/app/search/domain/usecases/search_by_text.dart';
-import 'package:frontend/app/search/presenter/states/search_state.dart';
+import 'package:frontend/app/search/presenter/stores/search_state.dart';
 import 'package:rxdart/rxdart.dart';
 part 'search_bloc.g.dart';
 
