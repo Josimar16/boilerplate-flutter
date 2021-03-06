@@ -1,8 +1,6 @@
-import 'dart:convert';
-
 import 'package:frontend/app/app_module.dart';
-import 'package:frontend/app/search/presenter/search_bloc.dart';
-import 'package:frontend/app/search/presenter/states/search_state.dart';
+import 'package:frontend/app/search/presenter/stores/search_bloc.dart';
+import 'package:frontend/app/search/presenter/stores/search_state.dart';
 import 'package:http/http.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_modular/flutter_modular_test.dart';
