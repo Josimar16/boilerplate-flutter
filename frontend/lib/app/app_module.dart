@@ -1,3 +1,4 @@
+import 'package:frontend/app/home/presenter/pages/home_page.dart';
 import 'package:frontend/app/search/presenter/pages/profile_page.dart';
 import 'package:frontend/app/search/presenter/stores/search_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -24,6 +25,8 @@ class AppModule extends MainModule {
   @override
   List<ModularRouter> get routers => [
         ModularRouter(Modular.initialRoute,
+            transition: TransitionType.fadeIn, child: (_, __) => HomePage()),
+        ModularRouter('/search',
             transition: TransitionType.fadeIn, child: (_, __) => SearchPage()),
         ModularRouter('/profile',
             transition: TransitionType.fadeIn,
