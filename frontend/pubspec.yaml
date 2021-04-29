@@ -28,6 +28,7 @@ dependencies:
   rxdart: ^0.24.1
   http:
     git: https://github.com/dart-lang/http
+  # google_fonts: 
   flutter:
     sdk: flutter
 

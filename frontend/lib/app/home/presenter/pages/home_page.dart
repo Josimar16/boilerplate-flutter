@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:frontend/app/home/presenter/components/content_widget.dart';
-import 'package:frontend/app/home/presenter/components/navigation_drawer_widget.dart';
+import 'package:frontend/app/home/presenter/widgets/content_widget.dart';
+import 'package:frontend/app/home/presenter/widgets/navigation_drawer_widget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Positioned(
-              bottom: (height / 100) * 10,
+              bottom: (height / 100) * 5,
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
@@ -43,13 +43,16 @@ class _HomePageState extends State<HomePage> {
                 constraints: BoxConstraints(
                   maxWidth: widthContainer,
                   minWidth: widthContainer,
-                  maxHeight: (height / 100) * 80,
-                  minHeight: (height / 100) * 80,
+                  maxHeight: (height / 100) * 90,
+                  minHeight: (height / 100) * 90,
                 ),
                 child: Stack(
                   fit: StackFit.loose,
                   children: [
-                    NavigationDrawerWidget(),
+                    Container(
+                      width: MediaQuery.of(context).size.width * (24 / 100),
+                      child: NavigationDrawerWidget(),
+                    ),
                     Positioned(
                       right: 0,
                       child: ContentWidget(),

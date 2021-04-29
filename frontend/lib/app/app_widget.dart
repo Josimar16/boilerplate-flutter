@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:frontend/app/themes/app_theme.dart';
 
 class AppWidget extends StatelessWidget {
   @override
@@ -7,10 +8,7 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       navigatorKey: Modular.navigatorKey,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primaryColor: Color(0xFFCCCCCC),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: AppTheme(context).defaultTheme,
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       onGenerateRoute: Modular.generateRoute,
